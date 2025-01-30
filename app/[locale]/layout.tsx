@@ -16,17 +16,21 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default function LocaleLayout({
-  children,
-  params: { locale }
-}: {
+type Props = {
   children: React.ReactNode;
-  params: { locale: string };
-}) {
+  params: {
+    locale: typeof locales[number];
+  };
+};
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: Props) {
   return (
-    <html lang={locale} dir={locale === 'fa' ? 'rtl' : 'ltr'} suppressHydrationWarning>
+    <html lang={params.locale} dir={params.locale === 'fa' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <body className={inter.className}>
-        <NextIntlClientProvider locale={locale}>
+        <NextIntlClientProvider locale={params.locale}>
           <ThemeProvider>
             {children}
           </ThemeProvider>
