@@ -5,6 +5,7 @@
   },
   "coffee": {
     "details": {
+      "title": "Coffee Details",
       "region": "Region",
       "farm": "Farm",
       "processing": "Processing Method",
@@ -16,5 +17,8 @@
   "theme": {
     "dark": "Dark Mode",
     "light": "Light Mode"
+  },
+  "header": {
+    "title": "Specialty Coffee"
   }
 } 

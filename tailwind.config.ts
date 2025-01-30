@@ -9,25 +9,25 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'var(--font-vazirmatn)', 'sans-serif'],
+      },
       colors: {
         primary: {
-          DEFAULT: '#468172',
-          50: '#EBF2EF',
-          100: '#D7E5E0',
-          200: '#B0CBC1',
-          300: '#88B1A2',
-          400: '#619784',
-          500: '#468172',
-          600: '#386656',
-          700: '#2A4C3F',
-          800: '#1C3227',
-          900: '#0E1914',
+          '50': '#f0fdf4',
+          '100': '#dcfce7',
+          '200': '#bbf7d0',
+          '300': '#86efac',
+          '400': '#4ade80',
+          '500': '#22c55e',
+          '600': '#16a34a',
+          '700': '#15803d',
+          '800': '#166534',
+          '900': '#14532d',
+          '950': '#052e16',
         },
         background: "var(--background)",
         foreground: "var(--foreground)",
-      },
-      fontFamily: {
-        sans: ['Vazirmatn', 'sans-serif'],
       },
       keyframes: {
         float: {

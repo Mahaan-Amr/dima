@@ -1,11 +1,22 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Vazirmatn } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { locales } from '../config';
 import { ThemeProvider } from '../components/ThemeProvider';
 import '../globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const vazirmatn = Vazirmatn({
+  subsets: ['arabic'],
+  display: 'swap',
+  variable: '--font-vazirmatn',
+});
 
 export const metadata: Metadata = {
   title: 'Specialty Coffee Showcase',
@@ -16,20 +27,19 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-type Props = {
-  children: React.ReactNode;
-  params: {
-    locale: typeof locales[number];
-  };
-};
-
-export default async function LocaleLayout({
+export default async function RootLayout({
   children,
   params,
-}: Props) {
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  // Enable static rendering
+  unstable_setRequestLocale(params.locale);
+
   return (
     <html lang={params.locale} dir={params.locale === 'fa' ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${vazirmatn.variable} font-sans`}>
         <NextIntlClientProvider locale={params.locale}>
           <ThemeProvider>
             {children}
