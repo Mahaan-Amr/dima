@@ -2,20 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 0 0% 100%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+/* Custom Animations */
+@keyframes steam {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-10px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* RTL Specific Styles */
+[dir="rtl"] .flip-card {
+  transform: rotateY(-180deg);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
 }

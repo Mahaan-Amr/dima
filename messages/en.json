@@ -1,0 +1,20 @@
+{
+  "navigation": {
+    "language": "Switch Language",
+    "theme": "Toggle Theme"
+  },
+  "coffee": {
+    "details": {
+      "region": "Region",
+      "farm": "Farm",
+      "processing": "Processing Method",
+      "variety": "Variety",
+      "altitude": "Altitude",
+      "flavorNotes": "Flavor Notes"
+    }
+  },
+  "theme": {
+    "dark": "Dark Mode",
+    "light": "Light Mode"
+  }
+} 

@@ -1,0 +1,88 @@
+{
+  "coffees": [
+    {
+      "id": "colombia-santa-rosa",
+      "en": {
+        "name": "Colombia Santa Rosa",
+        "region": "Santa Rosa de Cabal",
+        "farm": "Finca Santa Rosa",
+        "processing": "Double-stage wet fermentation",
+        "variety": "Caturra",
+        "altitude": "1,650 - 1,850 meters above sea level",
+        "flavorNotes": ["Pineapple", "Orange", "Citrus", "Floral"]
+      },
+      "fa": {
+        "name": "کلمبیا سانتا روسا",
+        "region": "سانتا روسا د کابال",
+        "farm": "فینکا سانتا روسا",
+        "processing": "تخمیر مرطوب دو مرحله‌ای",
+        "variety": "کاتورون",
+        "altitude": "۱۶۵۰ - ۱۸۵۰ متر از سطح دریا",
+        "flavorNotes": ["آناناس", "پرتقال", "مرکبات", "گلی"]
+      }
+    },
+    {
+      "id": "honduras-santa-rosa",
+      "en": {
+        "name": "Honduras Santa Rosa",
+        "region": "Santa Rosa",
+        "farm": "Smallholder Farms",
+        "processing": "Red Honey",
+        "variety": "Typica",
+        "altitude": "1,300 meters above sea level",
+        "flavorNotes": ["Fig", "Vanilla", "Apple", "Honey"]
+      },
+      "fa": {
+        "name": "هندوراس سانتا روسا",
+        "region": "سانتا روسا",
+        "farm": "مزارع خرده",
+        "processing": "عسل قرمز",
+        "variety": "تیپیکا",
+        "altitude": "۱۳۰۰ متر از سطح دریا",
+        "flavorNotes": ["انجیر", "وانیل", "سیب", "عسل"]
+      }
+    },
+    {
+      "id": "rwanda-ngoma",
+      "en": {
+        "name": "Rwanda Ngoma",
+        "region": "Western",
+        "farm": "Augustin Ndabeta",
+        "processing": "Natural Anaerobic Fermentation",
+        "variety": "Red Bourbon",
+        "altitude": "1,500 - 1,800 meters above sea level",
+        "flavorNotes": ["Vanilla", "Wine", "Cherry", "Chocolate"]
+      },
+      "fa": {
+        "name": "رواندا انگوما",
+        "region": "وسترن",
+        "farm": "آگوستین اندابتا",
+        "processing": "تخمیر بی‌هوازی طبیعی",
+        "variety": "رد بوربن",
+        "altitude": "۱۵۰۰ - ۱۸۰۰ متر از سطح دریا",
+        "flavorNotes": ["وانیل", "شراب", "گیلاس", "شکلات"]
+      }
+    },
+    {
+      "id": "indonesia-giant",
+      "en": {
+        "name": "Indonesia Giant",
+        "region": "Gayo",
+        "farm": "Yanhawa",
+        "processing": "Washed",
+        "variety": "Typica / Tim Tim",
+        "altitude": "1,500 - 1,600 meters above sea level",
+        "flavorNotes": ["Hazelnut", "Plum", "Dried Peach", "Chocolate"]
+      },
+      "fa": {
+        "name": "اندونزی جاینت",
+        "region": "گایو",
+        "farm": "یانهاوا",
+        "processing": "شسته شده",
+        "variety": "تیپیکا / تیم تیم",
+        "altitude": "۱۵۰۰ - ۱۶۰۰ متر از سطح دریا",
+        "flavorNotes": ["فندق", "آلو", "هلو خشک", "شکلات"]
+      }
+    }
+  ]
+} 

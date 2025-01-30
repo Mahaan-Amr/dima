@@ -1,0 +1,20 @@
+{
+  "navigation": {
+    "language": "تغییر زبان",
+    "theme": "تغییر تم"
+  },
+  "coffee": {
+    "details": {
+      "region": "منطقه",
+      "farm": "مزرعه",
+      "processing": "روش فرآوری",
+      "variety": "واریته",
+      "altitude": "ارتفاع",
+      "flavorNotes": "نت‌های طعم"
+    }
+  },
+  "theme": {
+    "dark": "حالت تاریک",
+    "light": "حالت روشن"
+  }
+} 
