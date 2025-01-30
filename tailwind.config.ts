@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', 'var(--font-vazirmatn)', 'sans-serif'],
+        vazirmatn: ['var(--font-vazirmatn)', 'sans-serif'],
       },
       colors: {
         primary: {

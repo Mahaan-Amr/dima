@@ -12,6 +12,13 @@
     --background: 222.2 84% 4.9%;
     --foreground: 0 0% 100%;
   }
+
+  /* Farsi text optimization */
+  [dir="rtl"] {
+    font-feature-settings: "ss01" on;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 }
 
 @layer utilities {

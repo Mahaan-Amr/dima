@@ -1,10 +1,31 @@
-import { getLocale } from 'next-intl/server';
 import Header from '../components/Header';
 import CoffeeCard from '../components/CoffeeCard';
 import coffeeData from '../../data/coffee-beans.json';
+import { locales, type Locale } from '../config';
+import { notFound } from 'next/navigation';
 
-export default async function Home() {
-  const locale = await getLocale();
+export function generateStaticParams() {
+  const params = locales.map((locale) => ({ locale }));
+  console.log('📝 Page - Generated static params:', params);
+  return params;
+}
+
+type Props = {
+  params: Promise<{ locale: Locale }>;
+};
+
+export default async function Home({
+  params
+}: Props) {
+  console.log('🏠 Page - Rendering with params:', params);
+
+  const { locale } = await params;
+
+  // Validate locale
+  if (!locales.includes(locale)) {
+    console.error('❌ Page - Invalid locale:', locale);
+    notFound();
+  }
 
   return (
     <main className="min-h-screen pt-20 pb-12 relative overflow-hidden bg-gray-50 dark:bg-gray-900">
@@ -42,14 +63,21 @@ export default async function Home() {
       <div className="container mx-auto px-4 relative">
         {/* Coffee Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
-          {coffeeData.coffees.map((coffee, index) => (
-            <CoffeeCard
-              key={coffee.id}
-              id={coffee.id}
-              details={coffee[locale as 'en' | 'fa']}
-              index={index}
-            />
-          ))}
+          {coffeeData.coffees.map((coffee, index) => {
+            console.log('☕ Page - Rendering coffee card:', {
+              id: coffee.id,
+              locale,
+              hasDetails: !!coffee[locale]
+            });
+            return (
+              <CoffeeCard
+                key={coffee.id}
+                id={coffee.id}
+                details={coffee[locale]}
+                index={index}
+              />
+            );
+          })}
         </div>
       </div>
     </main>

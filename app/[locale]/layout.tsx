@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter, Vazirmatn } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
-import { locales } from '../config';
+import { getMessages, setRequestLocale } from 'next-intl/server';
+import { locales, type Locale } from '../config';
 import { ThemeProvider } from '../components/ThemeProvider';
+import { notFound } from 'next/navigation';
 import '../globals.css';
 
 const inter = Inter({
@@ -14,8 +15,10 @@ const inter = Inter({
 
 const vazirmatn = Vazirmatn({
   subsets: ['arabic'],
-  display: 'swap',
   variable: '--font-vazirmatn',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -24,28 +27,54 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  const params = locales.map((locale) => ({ locale }));
+  console.log('📝 Layout - Generated static params:', params);
+  return params;
 }
+
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{ locale: Locale }>;
+};
 
 export default async function RootLayout({
   children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
-  // Enable static rendering
-  unstable_setRequestLocale(params.locale);
+  params
+}: Props) {
+  console.log('🌐 Layout - Rendering with params:', params);
 
-  return (
-    <html lang={params.locale} dir={params.locale === 'fa' ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <body className={`${inter.variable} ${vazirmatn.variable} font-sans`}>
-        <NextIntlClientProvider locale={params.locale}>
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
+  const { locale } = await params;
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  // Validate locale
+  if (!locales.includes(locale)) {
+    console.error('❌ Layout - Invalid locale:', locale);
+    notFound();
+  }
+
+  try {
+    // Get messages for the current locale
+    const messages = await getMessages();
+    console.log('💬 Layout - Loaded messages:', {
+      locale,
+      messageKeys: Object.keys(messages)
+    });
+
+    return (
+      <html lang={locale} dir={locale === 'fa' ? 'rtl' : 'ltr'} suppressHydrationWarning>
+        <body className={`${inter.variable} ${vazirmatn.variable} ${locale === 'fa' ? vazirmatn.className : inter.className}`}>
+          <NextIntlClientProvider messages={messages} locale={locale}>
+            <ThemeProvider>
+              {children}
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </body>
+      </html>
+    );
+  } catch (error) {
+    console.error('❌ Layout - Error:', error);
+    throw error;
+  }
 } 
